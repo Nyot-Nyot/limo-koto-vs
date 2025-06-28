@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "id_ID",
   },
+  other: {
+    'webcrx-disable': 'true', // Disable WebCRX extension
+  },
 };
 
 export default function RootLayout({
@@ -35,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-sans antialiased bg-gray-50 text-gray-900">
+    <html lang="id" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
+      <body className="font-sans antialiased bg-gray-50 text-gray-900" suppressHydrationWarning>
         <LayoutWrapper>
           {children}
         </LayoutWrapper>

@@ -35,8 +35,13 @@ export default function StatistikPage() {
   const [statistics, setStatistics] = useState<JorongStatistic[]>([]);
   const [jorongs, setJorongs] = useState<Jorong[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
+  const [selectedYear, setSelectedYear] = useState<number>(2024); // Default to current year
   const [selectedJorong, setSelectedJorong] = useState('');
+
+  // Set current year after component mounts to avoid hydration mismatch
+  useEffect(() => {
+    setSelectedYear(new Date().getFullYear());
+  }, []);
 
   useEffect(() => {
     fetchData();

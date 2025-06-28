@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, User, Search, Eye } from 'lucide-react';
-import { format } from 'date-fns';
-import { id } from 'date-fns/locale';
+import DateDisplay from '../../components/DateDisplay';
 
 interface News {
   id: string;
@@ -130,7 +129,7 @@ export default function BeritaPage() {
                 )}
                 <div className="flex items-center text-sm text-gray-500 mb-3">
                   <Calendar className="w-4 h-4 mr-2" />
-                  {format(new Date(item.publishedAt || item.createdAt), 'dd MMMM yyyy', { locale: id })}
+                  <DateDisplay date={item.publishedAt || item.createdAt} />
                   <User className="w-4 h-4 ml-4 mr-2" />
                   {item.author}
                 </div>

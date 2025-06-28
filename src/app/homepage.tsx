@@ -1,5 +1,6 @@
 import { Mountain, Users, Calendar, MapPin, Book, Camera, HelpCircle, BarChart3 } from "lucide-react";
 import Link from "next/link";
+import SafeDate from "../components/SafeDate";
 
 export default function HomePage() {
   const features = [
@@ -181,10 +182,10 @@ export default function HomePage() {
                 <div className="w-full h-48 bg-gradient-to-r from-green-400 to-green-600"></div>
                 <div className="p-6">
                   <div className="text-sm text-gray-500 mb-2">
-                    {new Date().toLocaleDateString('id-ID')}
+                    <SafeDate />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                    Contoh Berita Kegiatan Nagari
+                    Contoh Berita Kegiatan Nagari {item}
                   </h3>
                   <p className="text-gray-600 mb-4">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
