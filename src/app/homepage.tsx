@@ -71,45 +71,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-green-700 rounded-lg flex items-center justify-center">
-                <Mountain className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">Nagari Digital</h1>
-                <p className="text-sm text-gray-600">Sumatera Barat</p>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-green-600 transition-colors">
-                Beranda
-              </Link>
-              <Link href="/profil" className="text-gray-700 hover:text-green-600 transition-colors">
-                Profil
-              </Link>
-              <Link href="/berita" className="text-gray-700 hover:text-green-600 transition-colors">
-                Berita
-              </Link>
-              <Link href="/adat-istiadat" className="text-gray-700 hover:text-green-600 transition-colors">
-                Adat
-              </Link>
-              <Link href="/galeri" className="text-gray-700 hover:text-green-600 transition-colors">
-                Galeri
-              </Link>
-              <Link href="/statistik" className="text-gray-700 hover:text-green-600 transition-colors">
-                Statistik
-              </Link>
-              <Link href="/admin" className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
-                Admin
-              </Link>
-            </div>
-          </div>
-        </nav>
-      </header>
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-green-600 to-green-800 text-white">
