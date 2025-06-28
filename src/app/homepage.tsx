@@ -71,7 +71,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-green-600 to-green-800 text-white">
         <div className="absolute inset-0 bg-black/20"></div>

@@ -11,16 +11,14 @@ interface NagariProfile {
   history: string;
   vision: string;
   mission: string;
+  logo?: string;
+  coverImage?: string;
   address: string;
-  phone: string;
-  email: string;
-  website: string;
-  area: number;
-  population: number;
-  establishedYear: number;
-  latitude: number;
-  longitude: number;
-  waliNagari: string;
+  phone?: string;
+  email?: string;
+  website?: string;
+  latitude?: number;
+  longitude?: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -68,7 +66,7 @@ export default function ProfilNagariPage() {
     );
   }
 
-  const missions = profile.mission.split('\n').filter(m => m.trim());
+  const missions = profile?.mission?.split('\n').filter(m => m.trim()) || [];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -101,9 +99,9 @@ export default function ProfilNagariPage() {
             <div className="card">
               <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Sejarah Nagari</h2>
               <div className="prose prose-lg max-w-none text-gray-700">
-                {profile.history.split('\n').map((paragraph, index) => (
+                {profile.history?.split('\n').map((paragraph, index) => (
                   <p key={index} className="mb-4">{paragraph}</p>
-                ))}
+                )) || <p>Sejarah tidak tersedia</p>}
               </div>
             </div>
 
@@ -138,24 +136,15 @@ export default function ProfilNagariPage() {
               <h3 className="text-xl font-display font-bold text-gray-900 mb-4">Informasi Umum</h3>
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <Calendar className="w-5 h-5 text-primary-600 mr-3" />
-                  <div>
-                    <div className="text-sm text-gray-500">Tahun Berdiri</div>
-                    <div className="font-semibold">{profile.establishedYear}</div>
-                  </div>
-                </div>
-                <div className="flex items-center">
                   <MapPin className="w-5 h-5 text-primary-600 mr-3" />
                   <div>
-                    <div className="text-sm text-gray-500">Luas Wilayah</div>
-                    <div className="font-semibold">{profile.area} km²</div>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <Users className="w-5 h-5 text-primary-600 mr-3" />
-                  <div>
-                    <div className="text-sm text-gray-500">Jumlah Penduduk</div>
-                    <div className="font-semibold">{profile.population.toLocaleString('id-ID')} jiwa</div>
+                    <div className="text-sm text-gray-500">Koordinat</div>
+                    <div className="font-semibold">
+                      {profile.latitude != null && profile.longitude != null 
+                        ? `${Number(profile.latitude).toFixed(4)}, ${Number(profile.longitude).toFixed(4)}`
+                        : 'Tidak tersedia'
+                      }
+                    </div>
                   </div>
                 </div>
               </div>
@@ -202,15 +191,14 @@ export default function ProfilNagariPage() {
               </div>
             </div>
 
-            {/* Wali Nagari */}
+            {/* Kontak Info */}
             <div className="card">
-              <h3 className="text-xl font-display font-bold text-gray-900 mb-4">Wali Nagari</h3>
+              <h3 className="text-xl font-display font-bold text-gray-900 mb-4">Informasi Kontak</h3>
               <div className="text-center">
                 <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Users className="w-10 h-10 text-primary-600" />
                 </div>
-                <div className="font-semibold text-lg">{profile.waliNagari}</div>
-                <div className="text-sm text-gray-500">Wali Nagari</div>
+                <div className="text-sm text-gray-500">Portal Informasi Nagari</div>
               </div>
             </div>
           </div>
