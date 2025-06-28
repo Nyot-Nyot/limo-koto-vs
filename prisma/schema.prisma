@@ -1,0 +1,143 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./nagari.db"
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model NagariProfile {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  history     String
+  vision      String
+  mission     String
+  logo        String?
+  coverImage  String?
+  address     String
+  phone       String?
+  email       String?
+  website     String?
+  latitude    Float?
+  longitude   Float?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Jorong {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  population  Int         @default(0)
+  area        Float?      // dalam km2
+  kepalaJorong String?
+  customTraditions AdatIstiadat[]
+  statistics  JorongStatistic[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model AdatIstiadat {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  content     String   // Rich text content
+  images      String?  // JSON string of image URLs
+  jorongId    String
+  jorong      Jorong   @relation(fields: [jorongId], references: [id], onDelete: Cascade)
+  category    String   // "upacara", "tradisi", "budaya", etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  content     String   // Rich text content
+  excerpt     String
+  coverImage  String?
+  images      String?  // JSON string of additional images
+  author      String
+  published   Boolean  @default(false)
+  publishedAt DateTime?
+  views       Int      @default(0)
+  tags        String?  // Comma-separated tags
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Gallery {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String
+  category    String   // "kegiatan", "wisata", "budaya", etc.
+  eventDate   DateTime?
+  tags        String?  // Comma-separated tags
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model WaliNagari {
+  id          String    @id @default(cuid())
+  name        String
+  startYear   Int
+  endYear     Int?      // null jika masih menjabat
+  photo       String?
+  biography   String?
+  achievements String?
+  order       Int       // urutan jabatan
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  category  String?  // "umum", "pelayanan", "adat", etc.
+  order     Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model JorongStatistic {
+  id           String   @id @default(cuid())
+  jorongId     String
+  jorong       Jorong   @relation(fields: [jorongId], references: [id], onDelete: Cascade)
+  year         Int
+  population   Int
+  maleCount    Int
+  femaleCount  Int
+  childCount   Int      // 0-17 tahun
+  adultCount   Int      // 18-59 tahun
+  elderlyCount Int      // 60+ tahun
+  households   Int      // jumlah KK
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([jorongId, year])
+}
+
+model Settings {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
