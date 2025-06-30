@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./nagari.db"
+  url      = env("DATABASE_URL")
 }
 
 model Admin {

@@ -2,6 +2,12 @@
 
 Portal informasi resmi Nagari di Sumatera Barat yang dibangun dengan Next.js 15, TypeScript, Tailwind CSS, dan Prisma/SQLite.
 
+## 🚀 Quick Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/website-nagari&env=DATABASE_URL,NEXTAUTH_SECRET,JWT_SECRET&envDescription=Required%20environment%20variables&envLink=https://github.com/your-username/website-nagari/blob/main/.env.example)
+
+**For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)**
+
 ## 🎯 Fitur Utama
 
 ### Portal Publik

@@ -7,7 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:studio": "prisma studio",
+    "db:reset": "prisma migrate reset --force",
+    "postinstall": "prisma generate",
+    "vercel-build": "npm run db:generate && npm run build",
+    "deploy:setup": "npm run db:migrate && npm run db:seed",
+    "setup:env": "node setup.js env",
+    "setup:db": "node setup.js db",
+    "setup:all": "node setup.js all"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
