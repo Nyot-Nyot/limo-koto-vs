@@ -674,8 +674,8 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar */}
-      <div className="w-64 bg-white shadow-sm flex flex-col">
-        <div className="px-6 py-4 border-b">
+      <div className="w-64 bg-white shadow-sm">
+        <div className="p-6 border-b">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-green-700 rounded-lg flex items-center justify-center">
               <Mountain className="w-6 h-6 text-white" />
@@ -687,7 +687,7 @@ export default function AdminDashboard() {
           </div>
         </div>
         
-        <nav className="p-4 flex-1">
+        <nav className="p-4">
           <ul className="space-y-2">
             {menuItems.map((item) => {
               const IconComponent = item.icon;
@@ -710,7 +710,7 @@ export default function AdminDashboard() {
           </ul>
         </nav>
         
-        <div className="p-4 mt-auto">
+        <div className="absolute bottom-4 left-4 right-4">
           <div className="bg-gray-50 rounded-lg p-4 mb-4">
             <p className="text-sm text-gray-600">Masuk sebagai:</p>
             <p className="font-medium text-gray-900">{adminData.name}</p>
